@@ -1,47 +1,32 @@
-#include <stdio.h>
+#include<stdio.h>
 
-void pal(char* ptr, int len){
+void palindrome(char word[])
+{
+    int front,  test= 0;
+    int len;
+    len = strlen(word);
     
-    int count = 0;
-    
-    for (int i = 0; i < len / 2; i++)
+    for (front = 0; front < len / 2; front++)
     {
-        if (ptr[i] == ptr[len - i - 1])
-            count++;
-        else{
-            printf("회문이 아닙니다.");
-            break;
+        if (word[front] != word[len - 1 - front])
+        {
+            test = 1;
         }
     }
-
-    if (count == len / 2)
-        printf("회문입니다.");
+    if (test == 0)
+    {
+        printf("회문입니다. \n\n");
+    }
+    else
+    {
+        printf("회문이 아닙니다. \n\n");
+    }
 }
-
-int leng(char* ptr){
+int main()
+{
+    char word[100];
     
-    int leng = 0;
-  
-    while (ptr[leng] != '\0')
-        leng++;
-    
-    return leng;
-    
-}
-
-int main(void){
-    
-    char str[100];
-    int length;
-    
-    printf("문자열 입력 : ");
-    scanf("%s", str,100);
-    
-    length = leng(str);
-    pal(str, length);
-    
-    printf("\n");
-    
-    return 0;
-    
+    printf("문자열을 입력하세요 :");
+    gets(word);
+    palindrome(word);
 }
